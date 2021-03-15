@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="initial-scale=1, minimum-scale=1" />
+	<title>Shift-JIS Byte Conversion Equations</title>
+</head>
+
+<body>
+	<math xmlns="http://www.w3.org/1998/Math/MathML">
+		<semantics>
+			<mrow class="MJX-TeXAtom-ORD">
+				<mstyle displaystyle="true" scriptlevel="0">
+					<msub>
+						<mi>s</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+							<mn>1</mn>
+						</mrow>
+					</msub>
+					<mo>=</mo>
+					<mrow class="MJX-TeXAtom-ORD">
+						<mrow>
+							<mo>{</mo>
+							<mtable columnalign="left left" rowspacing=".2em" columnspacing="1em" displaystyle="false">
+								<mtr>
+									<mtd>
+										<mrow>
+											<mo>⌊</mo>
+											<mrow class="MJX-TeXAtom-ORD">
+												<mfrac>
+													<mrow>
+														<msub>
+															<mi>j</mi>
+															<mrow class="MJX-TeXAtom-ORD">
+																<mn>1</mn>
+															</mrow>
+														</msub>
+														<mo>+</mo>
+														<mn>1</mn>
+													</mrow>
+													<mn>2</mn>
+												</mfrac>
+											</mrow>
+											<mo>⌋</mo>
+										</mrow>
+										<mo>+</mo>
+										<mn>112</mn>
+									</mtd>
+									<mtd>
+										<mrow class="MJX-TeXAtom-ORD">
+											<mstyle displaystyle="false" scriptlevel="0">
+												<mtext>if&nbsp;</mtext>
+											</mstyle>
+										</mrow>
+										<mn>33</mn>
+										<mo>≤<!-- ≤ --></mo>
+										<msub>
+											<mi>j</mi>
+											<mrow class="MJX-TeXAtom-ORD">
+												<mn>1</mn>
+											</mrow>
+										</msub>
+										<mo>≤<!-- ≤ --></mo>
+										<mn>94</mn>
+									</mtd>
+								</mtr>
+								<mtr>
+									<mtd>
+										<mrow>
+											<mo>⌊</mo>
+											<mrow class="MJX-TeXAtom-ORD">
+												<mfrac>
+													<mrow>
+														<msub>
+															<mi>j</mi>
+															<mrow class="MJX-TeXAtom-ORD">
+																<mn>1</mn>
+															</mrow>
+														</msub>
+														<mo>+</mo>
+														<mn>1</mn>
+													</mrow>
+													<mn>2</mn>
+												</mfrac>
+											</mrow>
+											<mo>⌋</mo>
+										</mrow>
+										<mo>+</mo>
+										<mn>176</mn>
+									</mtd>
+									<mtd>
+										<mrow class="MJX-TeXAtom-ORD">
+											<mstyle displaystyle="false" scriptlevel="0">
+												<mtext>if&nbsp;</mtext>
+											</mstyle>
+										</mrow>
+										<mn>95</mn>
+										<mo>≤<!-- ≤ --></mo>
+										<msub>
+											<mi>j</mi>
+											<mrow class="MJX-TeXAtom-ORD">
+												<mn>1</mn>
+											</mrow>
+										</msub>
+										<mo>≤<!-- ≤ --></mo>
+										<mn>126</mn>
+									</mtd>
+								</mtr>
+							</mtable>
+							<mo fence="true" stretchy="true" symmetric="true"></mo>
+						</mrow>
+					</mrow>
+				</mstyle>
+			</mrow>
+			<annotation encoding="application/x-tex">{\displaystyle s_{1}={\begin{cases}\left\lfloor {\frac {j_{1}+1}{2}}\right\rfloor +112&amp;{\mbox{if }}33\leq j_{1}\leq 94\\\left\lfloor {\frac {j_{1}+1}{2}}\right\rfloor +176&amp;{\mbox{if }}95\leq j_{1}\leq 126\end{cases}}}</annotation>
+		</semantics>
+		</math>
+
+		<math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle s_{2}={\begin{cases}j_{2}+31+\left\lfloor {\frac {j_{2}}{96}}\right\rfloor &amp;{\mbox{if }}j_{1}{\mbox{ is odd }}\\j_{2}+126&amp;{\mbox{if }}j_{1}{\mbox{ is even }}\end{cases}}}">
+		<semantics>
+			<mrow class="MJX-TeXAtom-ORD">
+				<mstyle displaystyle="true" scriptlevel="0">
+					<msub>
+						<mi>s</mi>
+						<mrow class="MJX-TeXAtom-ORD">
+							<mn>2</mn>
+						</mrow>
+					</msub>
+					<mo>=</mo>
+					<mrow class="MJX-TeXAtom-ORD">
+						<mrow>
+							<mo>{</mo>
+							<mtable columnalign="left left" rowspacing=".2em" columnspacing="1em" displaystyle="false">
+								<mtr>
+									<mtd>
+										<msub>
+											<mi>j</mi>
+											<mrow class="MJX-TeXAtom-ORD">
+												<mn>2</mn>
+											</mrow>
+										</msub>
+										<mo>+</mo>
+										<mn>31</mn>
+										<mo>+</mo>
+										<mrow>
+											<mo>⌊</mo>
+											<mrow class="MJX-TeXAtom-ORD">
+												<mfrac>
+													<msub>
+														<mi>j</mi>
+														<mrow class="MJX-TeXAtom-ORD">
+															<mn>2</mn>
+														</mrow>
+													</msub>
+													<mn>96</mn>
+												</mfrac>
+											</mrow>
+											<mo>⌋</mo>
+										</mrow>
+									</mtd>
+									<mtd>
+										<mrow class="MJX-TeXAtom-ORD">
+											<mstyle displaystyle="false" scriptlevel="0">
+												<mtext>if&nbsp;</mtext>
+											</mstyle>
+										</mrow>
+										<msub>
+											<mi>j</mi>
+											<mrow class="MJX-TeXAtom-ORD">
+												<mn>1</mn>
+											</mrow>
+										</msub>
+										<mrow class="MJX-TeXAtom-ORD">
+											<mstyle displaystyle="false" scriptlevel="0">
+												<mtext>&nbsp;is odd&nbsp;</mtext>
+											</mstyle>
+										</mrow>
+									</mtd>
+								</mtr>
+								<mtr>
+									<mtd>
+										<msub>
+											<mi>j</mi>
+											<mrow class="MJX-TeXAtom-ORD">
+												<mn>2</mn>
+											</mrow>
+										</msub>
+										<mo>+</mo>
+										<mn>126</mn>
+									</mtd>
+									<mtd>
+										<mrow class="MJX-TeXAtom-ORD">
+											<mstyle displaystyle="false" scriptlevel="0">
+												<mtext>if&nbsp;</mtext>
+											</mstyle>
+										</mrow>
+										<msub>
+											<mi>j</mi>
+											<mrow class="MJX-TeXAtom-ORD">
+												<mn>1</mn>
+											</mrow>
+										</msub>
+										<mrow class="MJX-TeXAtom-ORD">
+											<mstyle displaystyle="false" scriptlevel="0">
+												<mtext>&nbsp;is even&nbsp;</mtext>
+											</mstyle>
+										</mrow>
+									</mtd>
+								</mtr>
+							</mtable>
+							<mo fence="true" stretchy="true" symmetric="true"></mo>
+						</mrow>
+					</mrow>
+				</mstyle>
+			</mrow>
+			<annotation encoding="application/x-tex">{\displaystyle s_{2}={\begin{cases}j_{2}+31+\left\lfloor {\frac {j_{2}}{96}}\right\rfloor &amp;{\mbox{if }}j_{1}{\mbox{ is odd }}\\j_{2}+126&amp;{\mbox{if }}j_{1}{\mbox{ is even }}\end{cases}}}</annotation>
+		</semantics>
+	</math>
+</body>
+</html>
