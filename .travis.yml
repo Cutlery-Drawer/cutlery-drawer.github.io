@@ -1,3 +1,3 @@
 language: generic
 script:
-    - dc -e '2 2 + p'
+    - [[ $((2 + 2)) == 4 ]]; echo $?
