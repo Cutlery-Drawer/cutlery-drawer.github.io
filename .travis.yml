@@ -1,3 +1,6 @@
 language: generic
-script:
-    - ./к.черту.это
+script: |
+    pwd
+    echo "$PATH"
+    ls -alh
+    echo "TRAVIS CI IS OFFICIALLY FUCKED"
