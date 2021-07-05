@@ -1,14 +1,12 @@
 #!/bin/sh
 set -e
 
-# Force GitHub Actions to colourise output
-if [ "$GITHUB_ACTIONS" ]; then tput(){
-	command tput 2>/dev/null -T "${TERM:-xterm-256color}" "$@" || :
-}; fi
+# ASCII escape character (U+001B)
+esc=`printf '\033'`
 
 # Print a colourful "==> $1"
 title(){
-	set -- "$1" "`tput setaf 4`" "`tput bold`" "`tput sgr0`"
+	set -- "$1" "$esc[34m" "$esc[1m" "$esc[0m"
 	printf >&2 '%s==>%s %s%s%s\n' "$2" "$4" "$3" "$1" "$4"
 }
 
@@ -53,7 +51,7 @@ if [ -f /home/travis/.travis/functions ]; then
 	startFold 'fuck' 'Catting functions'
 		cat /home/travis/.travis/functions
 	endFold
-else
+elif [ "$TRAVIS_JOB_ID" ]; then
 	echo 'No such file: /home/travis/.travis/functions'
 fi
 
