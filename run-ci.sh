@@ -66,7 +66,7 @@ startFold 'diagnostics' 'Dumping diagnostic info and shit'
 	endFold 'ls-cwd'
 
 	startFold 'ls-defs' 'Variable and function definitions'
-		set
+		node -p 'Object.keys(process.env).sort().map(x => x + "=" + process.env[x]).join("\n")'
 
 endFold 'diagnostics'
 exit
