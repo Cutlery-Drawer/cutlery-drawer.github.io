@@ -1,3 +1,7 @@
 language: generic
+branches:
+    only:
+        - master
+        - ci
 script:
     - sh ./run-ci.sh
