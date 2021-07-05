@@ -21,5 +21,5 @@ jobs:
             - uses: actions/checkout@v2
             - name: Run some stupid bullshit
               run: . ./run-ci.sh
-              with:
-                  channel: ${{ matrix.channel }}
+              env:
+                  ATOM_CHANNEL: ${{ matrix.channel }}
