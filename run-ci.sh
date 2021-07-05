@@ -1,6 +1,11 @@
 #!/bin/sh
 set -e
 
+# Force GitHub Actions to colourise output
+if [ "$GITHUB_ACTIONS" ]; then tput(){
+	command tput 2>/dev/null -T "${TERM:-xterm-256color}" "$@" || :
+}; fi
+
 # Print a colourful "==> $1"
 title(){
 	set -- "$1" "`tput setaf 4`" "`tput bold`" "`tput sgr0`"
@@ -59,7 +64,6 @@ startFold 'diagnostics' 'Dumping diagnostic info and shit'
 	endFold 'location'
 
 	startFold 'ls-cwd'
-		echo "ls -alh"
 		ls -alh
 	endFold 'ls-cwd'
 
