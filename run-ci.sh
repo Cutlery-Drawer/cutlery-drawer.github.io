@@ -4,10 +4,15 @@ set -e
 # ASCII escape character (U+001B)
 esc=`printf '\033'`
 
+# Force Node.js to emit ANSI-coloured output
+if command -v node >/dev/null 2>&1; then node(){
+	FORCE_COLOR=1 command node "$@"
+}; fi
+
 # Print a colourful "==> $1"
 title(){
 	set -- "$1" "$esc[34m" "$esc[1m" "$esc[0m"
-	printf >&2 '%s==>%s %s%s%s\n' "$2" "$4" "$3" "$1" "$4"
+	printf '%s==>%s %s%s%s\n' "$2" "$4" "$3" "$1" "$4"
 }
 
 # Colon-delimited list of currently-open folds
