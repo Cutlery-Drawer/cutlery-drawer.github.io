@@ -14,13 +14,13 @@ foldStack=
 # - Arguments: [id] [label]?
 startFold(){
 	if [ "$TRAVIS_JOB_ID" ]; then
-		printf 'travis_fold:start:%s\r\e[0K' "$1"
+		printf 'travis_fold:start:%s\r\033[0K' "$1"
 	elif [ "$GITHUB_ACTIONS" ]; then
 		set -- "$1" "${2:-$1}"
 		set -- "`printf %s "$1" | sed s/:/꞉/g`" "$2"
-		printf '\e[31mPushing %s...\e[39m\n' "$1" >&2
+		printf '\033[31mPushing %s...\033[39m\n' "$1" >&2
 		foldStack="$1:$foldStack"
-		printf '\e[31mStack is now \e[4m%s\e[24;39m\n' "$foldStack" >&2
+		printf '\033[31mStack is now \033[4m%s\033[24;39m\n' "$foldStack" >&2
 		printf '::group::%s\n' "$2"
 	fi
 }
@@ -29,18 +29,18 @@ startFold(){
 # - Arguments: [id]?
 endFold(){
 	if [ "$TRAVIS_JOB_ID" ]; then
-		printf 'travis_fold:end:%s\r\e[0K' "$1"
+		printf 'travis_fold:end:%s\r\033[0K' "$1"
 	elif [ "$GITHUB_ACTIONS" ]; then
 		if [ $# -eq 0 ]; then
 			set -- "${foldStack%%:*}"
-			printf '\e[31mNo argument; defaulting to \e[4m%s\e[24;39m\n' "$1"
+			printf '\033[31mNo argument; defaulting to \033[4m%s\033[24;39m\n' "$1"
 		fi
-		printf '\e[31mEnd of fold "%s"\e[39m\n' "$1" >&2
+		printf '\033[31mEnd of fold "%s"\033[39m\n' "$1" >&2
 		while [ "$foldStack" ] && [ ! "$1" = "${foldStack%%:*}" ]; do
-			printf '\e[31mPopping %s...\e[39m\n' "$1" >&2
+			printf '\033[31mPopping %s...\033[39m\n' "$1" >&2
 			set -- "${foldStack%%:*}"
 			foldStack="${foldStack#*:}"
-			printf '\e[31mStack is now \e[4m%s\e[24;39m\n' "$foldStack" >&2
+			printf '\033[31mStack is now \033[4m%s\033[24;39m\n' "$foldStack" >&2
 			printf '::endgroup::\n'
 		done
 	fi
