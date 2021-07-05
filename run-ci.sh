@@ -4,11 +4,6 @@ set -e
 # ASCII escape character (U+001B)
 esc=`printf '\033'`
 
-# Force Node.js to emit ANSI-coloured output
-if command -v node >/dev/null 2>&1; then node(){
-	FORCE_COLOR=1 command node "$@"
-}; fi
-
 # Print a colourful "==> $1"
 title(){
 	set -- "$1" "$esc[34m" "$esc[1m" "$esc[0m"
@@ -71,7 +66,9 @@ startFold 'diagnostics' 'Dumping diagnostic info and shit'
 	endFold 'ls-cwd'
 
 	startFold 'ls-defs' 'Variable and function definitions'
-		node -p 'Object.keys(process.env).sort().map(x => x + "=" + process.env[x]).join("\n")'
+		node -p 'Object.keys(process.env).sort().map(x =>
+			`\x1B[38;5;10m${x}\x1B[39m\x1B[2m=\x1B[38;5;14m\x27\x1B[22m${process.env[x]}\x1B[2m\x27\x1B[0m`
+		).join("\n")'
 
 endFold 'diagnostics'
 exit
