@@ -18,9 +18,7 @@ startFold(){
 	elif [ "$GITHUB_ACTIONS" ]; then
 		set -- "$1" "${2:-$1}"
 		set -- "`printf %s "$1" | sed s/:/꞉/g`" "$2"
-		printf '\033[31mPushing %s...\033[39m\n' "$1" >&2
 		foldStack="$1:$foldStack"
-		printf '\033[31mStack is now \033[4m%s\033[24;39m\n' "$foldStack" >&2
 		
 		# FIXME: GitHub Actions don't support nested groups. Degrade gracefully.
 		case $foldStack in *:*:*) title "$2" ;; *) printf '::group::%s\n' "$2" ;; esac
@@ -36,17 +34,10 @@ endFold(){
 	if [ "$TRAVIS_JOB_ID" ]; then
 		printf 'travis_fold:end:%s\r\033[0K' "$1"
 	elif [ "$GITHUB_ACTIONS" ]; then
-		if [ $# -eq 0 ]; then
-			set -- "${foldStack%%:*}"
-			printf '\033[31mNo argument; defaulting to \033[4m%s\033[24;39m\n' "$1"
-		fi
-		printf '\033[31mEnd of fold "%s"\033[39m\n' "$1" >&2
+		[ $# -gt 0 ] || set -- "${foldStack%%:*}"
 		while [ "$foldStack" ] && [ ! "$1" = "${foldStack%%:*}" ]; do
-			printf '\033[31mPopping %s...\033[39m\n' "$1" >&2
 			set -- "${foldStack%%:*}"
 			foldStack="${foldStack#*:}"
-			printf '\033[31mStack is now \033[4m%s\033[24;39m\n' "$foldStack" >&2
-			
 			# FIXME: Same issue/limitation as `startFold()`
 			case $foldStack in *:*) ;; *) printf '::endgroup::\n' ;; esac
 		done
