@@ -1,0 +1,25 @@
+name: Atom-CI
+
+on:
+    push:         {branches: [master]}
+    pull_request: {branches: [master]}
+    workflow_dispatch:
+        # Enable manual execution via Actions tab
+
+jobs:
+    build:
+        runs-on: ${{ matrix.os }}
+        strataegy:
+            matrix:
+                os:
+                    - ubuntu-latest
+                    - macos-latest
+                channel:
+                    - stable
+                    - beta
+        steps:
+            - uses: actions/checkout@v2
+            - name: Run some stupid bullshit
+              run: . ./run-ci.sh
+              with:
+                  channel: ${{ matrix.channel }}
