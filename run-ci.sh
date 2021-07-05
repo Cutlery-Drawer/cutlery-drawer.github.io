@@ -21,7 +21,10 @@ startFold(){
 		printf '\033[31mPushing %s...\033[39m\n' "$1" >&2
 		foldStack="$1:$foldStack"
 		printf '\033[31mStack is now \033[4m%s\033[24;39m\n' "$foldStack" >&2
-		printf '::group::%s\n' "$2"
+		
+		# FIXME: GitHub Actions don't support nested groups. Degrade gracefully.
+		case $foldStack in *:*:*) title "$2" ;; *) printf '::group::%s\n' "$2" ;; esac
+		
 		return
 	fi
 	[ -z "$2" ] || title "$2"
@@ -43,7 +46,9 @@ endFold(){
 			set -- "${foldStack%%:*}"
 			foldStack="${foldStack#*:}"
 			printf '\033[31mStack is now \033[4m%s\033[24;39m\n' "$foldStack" >&2
-			printf '::endgroup::\n'
+			
+			# FIXME: Same issue/limitation as `startFold()`
+			case $foldStack in *:*) ;; *) printf '::endgroup::\n' ;; esac
 		done
 	fi
 }
