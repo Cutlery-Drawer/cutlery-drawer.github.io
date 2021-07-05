@@ -67,7 +67,7 @@ startFold 'diagnostics' 'Dumping diagnostic info and shit'
 
 	startFold 'ls-defs' 'Variable and function definitions'
 		node -p 'Object.keys(process.env).sort().map(x =>
-			`\x1B[38;5;10m${x}\x1B[39m\x1B[2m=\x1B[38;5;14m\x27\x1B[22m${process.env[x]}\x1B[2m\x27\x1B[0m`
+			`\x1B[32m${x}\x1B[39m\x1B[2m=\x1B[36m\x27\x1B[22m${process.env[x]}\x1B[2m\x27\x1B[0m`
 		).join("\n")'
 
 endFold 'diagnostics'
