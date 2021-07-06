@@ -1,1 +1,3 @@
+env:
+    ATOM_RELEASE: v1.38.2
 script: curl -sL https://git.io/fji1w | sh
