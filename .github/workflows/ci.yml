@@ -18,4 +18,4 @@ jobs:
             - name: Run package tests
               run: sh < ./run-ci.sh
               env:
-                  ATOM_CHANNEL: ${{ matrix.channel }}
+                  ATOM_RELEASE: ${{ matrix.channel }}
