@@ -16,6 +16,6 @@ jobs:
         steps:
             - uses: actions/checkout@v2
             - name: Run package tests
-              run: sh -x < ./run-ci.sh
+              run: exec ./run-ci.sh
               env:
                   ATOM_RELEASE: ${{ matrix.channel }}
