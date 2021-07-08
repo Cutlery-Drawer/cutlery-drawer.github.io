@@ -1,10 +1,14 @@
 #!/bin/sh
 set -e
 
-which bash             || :
-stat -x /bin/bash      || :
-{ stat -x "$GITHUB_ENV"  && file "$GITHUB_ENV";  } || :
-{ stat -x "$GITHUB_PATH" && file "$GITHUB_PATH"; } || :
+stat='stat -x'
+
+# GNU stat(1) is verbose by default (and therefore doesn't grok the `-x` switch)
+$stat / >/dev/null 2>&1 || stat=stat
+which bash      || :
+$stat /bin/bash || :
+{ $stat "$GITHUB_ENV"  && file "$GITHUB_ENV";  } || :
+{ $stat "$GITHUB_PATH" && file "$GITHUB_PATH"; } || :
 
 if test -t 1
 	then echo 'STDOUT is attached to a terminal'
@@ -16,15 +20,17 @@ if test -t 2
 fi
 
 # Determine if this works
-exec </dev/tty               # Reopen STDIN
-stty=`stty -g`               # Save current terminal settings
-stty raw -echo min 0 time 10 # Prep TTY for capture
-printf '\033[6n' >/dev/tty   # Send DSR code requesting cursor position
-IFS='[;R' read -r _ row col  # Read the response
-stty "$stty" && unset stty   # Restore terminal settings
-printf 'Cursor position:\n'
-printf '\tRow: %s\n' "$row"
-printf '\tCol: %s\n' "$col"
+if test -t 1; then
+	exec </dev/tty               # Reopen STDIN
+	stty=`stty -g`               # Save current terminal settings
+	stty raw -echo min 0 time 10 # Prep TTY for capture
+	printf '\033[6n' >/dev/tty   # Send DSR code requesting cursor position
+	IFS='[;R' read -r _ row col  # Read the response
+	stty "$stty" && unset stty   # Restore terminal settings
+	printf 'Cursor position:\n'
+	printf '\tRow: %s\n' "$row"
+	printf '\tCol: %s\n' "$col"
+fi
 
 printf '\n::warning::Foo bar, etc'
 printf '\nFoo\r::warning::Foo bar, etc'
