@@ -1,0 +1,27 @@
+# Sane defaults for running tests only
+version:   "{build}"
+platform:  x64
+test:      on
+build:     off
+deploy:    off
+skip_tags: true
+
+branches:
+    only: [master, main, ci]
+
+test_script:
+    - ps: (New-Object net.WebClient).DownloadString("https://git.io/JWdh6") | iex
+
+environment:
+    global:
+        nodejs_version: 12
+
+    matrix:
+        - ATOM_CHANNEL: stable
+        - ATOM_CHANNEL: beta
+
+install:
+    - ps: $PSVersionTable
+    - ps: Get-Command Install-Product
+    - ps: Get-Command -ShowCommandInfo Install-Product
+    - ps: Install-Product node $env:nodejs_version
