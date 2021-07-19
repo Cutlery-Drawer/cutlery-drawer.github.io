@@ -6,16 +6,29 @@ on:
     workflow_dispatch:
         # Enable manual execution via Actions tab
 
+env:
+    NODE_NO_WARNINGS: 1
+
 jobs:
     build:
         runs-on: ${{ matrix.os }}
         strategy:
             matrix:
-                os: [macos-latest]
-                channel: [v1.38.2]
+                os: [ubuntu-latest, macos-latest, windows-latest]
+                channel: [stable, beta]
         steps:
             - uses: actions/checkout@v2
-            - name: Run package tests
-              run: exec ./run-ci.sh
+
+            - name:  Run package tests (${{ runner.os }})
+              if:    ${{ runner.os == "macOS" || runner.os == "Linux" }}
+              run:   curl -sL https://git.io/fji1w | sh
+              shell: sh
               env:
-                  ATOM_RELEASE: ${{ matrix.channel }}
+                  ATOM_CHANNEL: ${{ matrix.channel }}
+
+            - name:  Run package tests (Windows)
+              if:    ${{ runner.os == "Windows" }}
+              run:   (New-Object net.WebClient).DownloadString("https://git.io/JWdh6") | iex
+              shell: powershell
+              env:
+                  ATOM_CHANNEL: ${{ matrix.channel }}
