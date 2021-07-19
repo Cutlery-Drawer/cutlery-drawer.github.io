@@ -20,14 +20,14 @@ jobs:
             - uses: actions/checkout@v2
 
             - name:  Run package tests (${{ runner.os }})
-              if:    ${{ runner.os == macOS || runner.os == Linux }}
+              if:    ${{ runner.os == 'macOS' || runner.os == 'Linux' }}
               run:   curl -sL https://git.io/fji1w | sh
               shell: sh
               env:
                   ATOM_CHANNEL: ${{ matrix.channel }}
 
             - name:  Run package tests (Windows)
-              if:    ${{ runner.os == Windows }}
+              if:    ${{ runner.os == 'Windows' }}
               run:   (New-Object net.WebClient).DownloadString("https://git.io/JWdh6") | iex
               shell: powershell
               env:
