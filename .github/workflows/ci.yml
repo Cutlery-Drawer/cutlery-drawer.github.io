@@ -16,7 +16,14 @@ jobs:
         steps:
             - uses: actions/checkout@v2
 
-            - name:  Run package tests (${{ matrix.os }})
+            - name: Display current date
+              if:   ${{ matrix.os == 'macOS' }}
+              shell: sh
+              run: |
+                  echo "::command::date"
+                  echo "[command]date"
+
+            - name:  Run package tests (macOS, Linux)
               if:    ${{ startsWith(matrix.os, 'macOS') || startsWith(matrix.os, 'Ubuntu') }}
               run:   curl -sL https://git.io/fji1w | sh
               shell: sh
