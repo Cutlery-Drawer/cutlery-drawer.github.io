@@ -16,12 +16,20 @@ jobs:
         steps:
             - uses: actions/checkout@v2
 
-            - name: Display current date
+            - name: Switch working directory
               if:   ${{ startsWith(matrix.os, 'macOS') || startsWith(matrix.os, 'Ubuntu') }}
               shell: sh
               run: |
-                  echo "::command::date"
-                  echo "[command]date"
+                  pwd
+                  cd "AFMs"
+                  pwd
+
+            - name: Display working directory
+              if:   ${{ startsWith(matrix.os, 'macOS') || startsWith(matrix.os, 'Ubuntu') }}
+              shell: sh
+              run: |
+                  echo "[command]pwd"
+                  pwd
 
             - name:  Run package tests (macOS, Linux)
               if:    ${{ startsWith(matrix.os, 'macOS') || startsWith(matrix.os, 'Ubuntu') }}
