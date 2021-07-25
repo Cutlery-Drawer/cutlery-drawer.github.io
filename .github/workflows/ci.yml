@@ -19,23 +19,32 @@ jobs:
         steps:
             - uses: actions/checkout@v2
 
-            - name: Take a dump
-              run: |
-                echo "Dumping context or something"
-                cat <<\;
-                ${{ toJSON(github) }}
-                ;
-                echo "Dumping runner"
-                cat <<\;
-                ${{ toJSON(runner) }}
-                ;
-
             - name: Check for Windows
               if: ${{ matrix.os == 'Windows' }}
+              shell: powershell
               run: |
-                  echo "lmao"
+                  Write-Host "Dumping context or something"
+                  @'
+                  ${{ toJSON(github) }}
+                  '@
+
+                  Write-Host "Dumping runner"
+                  @'
+                  ${{ toJSON(runner) }}
+                  '@
+
+                  $host
+                  $host | Get-Member -static -force
 
             - name: Check for an OS I can take seriously
               if: ${{ matrix.os != 'Windows' }}
+              shell: bash
               run: |
-                  echo "NOW we're talking."
+                  echo "Dumping GitHub thingie"
+                  cat <<\;
+                  ${{ toJSON(github) }}
+                  ;
+                  echo "Dumping runner"
+                  cat <<\;
+                  ${{ toJSON(runner) }}
+                  ;
