@@ -23,16 +23,9 @@ jobs:
               if: ${{ matrix.os == 'Windows' }}
               shell: powershell
               run: |
-                  Write-Host "Dumping context or something"
                   @'
-                  ${{ toJSON(github) }}
+                  ${{ toJSON(matrix) }}
                   '@
-
-                  Write-Host "Dumping runner"
-                  @'
-                  ${{ toJSON(runner) }}
-                  '@
-
                   $host
                   $host | Get-Member -static -force
 
@@ -40,11 +33,7 @@ jobs:
               if: ${{ matrix.os != 'Windows' }}
               shell: bash
               run: |
-                  echo "Dumping GitHub thingie"
+                  echo "Why is this running on ${{ matrix.os }}?"
                   cat <<\;
-                  ${{ toJSON(github) }}
-                  ;
-                  echo "Dumping runner"
-                  cat <<\;
-                  ${{ toJSON(runner) }}
+                  ${{ toJSON(matrix) }}
                   ;
