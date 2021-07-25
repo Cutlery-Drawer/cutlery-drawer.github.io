@@ -6,9 +6,6 @@ on:
     workflow_dispatch:
         # Enable manual execution via Actions tab
 
-env:
-    NODE_NO_WARNINGS: 1
-
 jobs:
     build:
         runs-on: ${{ matrix.os }}
@@ -19,60 +16,12 @@ jobs:
         steps:
             - uses: actions/checkout@v2
 
-            - name: A:\TAKE.EXE /A MASSI~1 /DUMP
-              if: ${{ matrix.os == 'Windows' }}
-              shell: powershell
-              run: |
-                  "github"
-                  @'
-                  ${{ toJSON(github) }}
-                  '@
-                  "env"
-                  @'
-                  ${{ toJSON(env) }}
-                  '@
-                  "job"
-                  @'
-                  ${{ toJSON(job) }}
-                  '@
-                  "steps"
-                  @'
-                  ${{ toJSON(steps) }}
-                  '@
-                  "runner"
-                  @'
-                  ${{ toJSON(runner) }}
-                  '@
-                  "needs"
-                  @'
-                  ${{ toJSON(needs) }}
-                  '@
+            - name:  Run package tests (macOS, Linux)
+              if:    ${{ ! startsWith(matrix.os, 'windows') }}
+              run:   curl -sL https://git.io/fji1w | sh
+              shell: sh
 
-            - name: ./take/a/massive --dump
-              if: ${{ matrix.os != 'Windows' }}
-              shell: bash
-              run: |
-                  echo "github"
-                  cat <<\;
-                  ${{ toJSON(github) }}
-                  ;
-                  echo "env"
-                  cat <<\;
-                  ${{ toJSON(env) }}
-                  ;
-                  echo "job"
-                  cat <<\;
-                  ${{ toJSON(job) }}
-                  ;
-                  echo "steps"
-                  cat <<\;
-                  ${{ toJSON(steps) }}
-                  ;
-                  echo "runner"
-                  cat <<\;
-                  ${{ toJSON(runner) }}
-                  ;
-                  echo "needs"
-                  cat <<\;
-                  ${{ toJSON(needs) }}
-                  ;
+            - name:  Run package tests (Windows)
+              if:    ${{ startsWith(matrix.os, 'windows') }}
+              run:   (New-Object net.WebClient).DownloadString("https://git.io/JWdh6") | iex
+              shell: powershell
