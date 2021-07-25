@@ -19,16 +19,23 @@ jobs:
         steps:
             - uses: actions/checkout@v2
 
-            - name:  Run package tests (${{ runner.os }})
-              if:    ${{ runner.os == 'macOS' || runner.os == 'Linux' }}
-              run:   curl -sL https://git.io/fji1w | sh
-              shell: sh
-              env:
-                  ATOM_CHANNEL: ${{ matrix.channel }}
+            - name: Take a dump
+              run: |
+                echo "Dumping context or something"
+                cat <<\;
+                ${{ toJSON(github) }}
+                ;
+                echo "Dumping runner"
+                cat <<\;
+                ${{ toJSON(runner) }}
+                ;
 
-            - name:  Run package tests (Windows)
-              if:    ${{ runner.os == 'Windows' }}
-              run:   (New-Object net.WebClient).DownloadString("https://git.io/JWdh6") | iex
-              shell: powershell
-              env:
-                  ATOM_CHANNEL: ${{ matrix.channel }}
+            - name: Check for Windows
+              if: ${{ matrix.os == 'Windows' }}
+              run: |
+                  echo "lmao"
+
+            - name: Check for an OS I can take seriously
+              if: ${{ matrix.os != 'Windows' }}
+              run: |
+                  echo "NOW we're talking."

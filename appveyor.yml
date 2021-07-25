@@ -22,6 +22,4 @@ environment:
 
 install:
     - ps: $PSVersionTable
-    - ps: Get-Command Install-Product
-    - ps: Get-Command -ShowCommandInfo Install-Product
     - ps: Install-Product node $env:nodejs_version
