@@ -19,21 +19,60 @@ jobs:
         steps:
             - uses: actions/checkout@v2
 
-            - name: Check for Windows
+            - name: A:\TAKE.EXE /A MASSI~1 /DUMP
               if: ${{ matrix.os == 'Windows' }}
               shell: powershell
               run: |
+                  "github"
                   @'
-                  ${{ toJSON(matrix) }}
+                  ${{ toJSON(github) }}
                   '@
-                  $host
-                  $host | Get-Member -static -force
+                  "env"
+                  @'
+                  ${{ toJSON(env) }}
+                  '@
+                  "job"
+                  @'
+                  ${{ toJSON(job) }}
+                  '@
+                  "steps"
+                  @'
+                  ${{ toJSON(steps) }}
+                  '@
+                  "runner"
+                  @'
+                  ${{ toJSON(runner) }}
+                  '@
+                  "needs"
+                  @'
+                  ${{ toJSON(needs) }}
+                  '@
 
-            - name: Check for an OS I can take seriously
+            - name: ./take/a/massive --dump
               if: ${{ matrix.os != 'Windows' }}
               shell: bash
               run: |
-                  echo "Why is this running on ${{ matrix.os }}?"
+                  echo "github"
                   cat <<\;
-                  ${{ toJSON(matrix) }}
+                  ${{ toJSON(github) }}
+                  ;
+                  echo "env"
+                  cat <<\;
+                  ${{ toJSON(env) }}
+                  ;
+                  echo "job"
+                  cat <<\;
+                  ${{ toJSON(job) }}
+                  ;
+                  echo "steps"
+                  cat <<\;
+                  ${{ toJSON(steps) }}
+                  ;
+                  echo "runner"
+                  cat <<\;
+                  ${{ toJSON(runner) }}
+                  ;
+                  echo "needs"
+                  cat <<\;
+                  ${{ toJSON(needs) }}
                   ;
