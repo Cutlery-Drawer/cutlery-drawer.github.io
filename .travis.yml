@@ -7,6 +7,10 @@ git:
 
 language: node_js
 
+env:
+    global:
+        ATOM_CI_PACKAGE_ROOT: spec
+
 node_js: 12
 
 matrix:
@@ -41,4 +45,5 @@ notifications:
 
 script:
     - node --version
+    - echo "ATOM_CI_PACKAGE_ROOT = $ATOM_CI_PACKAGE_ROOT"
     - curl -sL https://git.io/fji1w | sh
