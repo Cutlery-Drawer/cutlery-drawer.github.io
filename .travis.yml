@@ -45,5 +45,4 @@ notifications:
 
 script:
     - node --version
-    - set
-    - curl -sL https://git.io/fji1w | sh
+    - "$PWD/stuff.sh"
