@@ -45,5 +45,5 @@ notifications:
 
 script:
     - node --version
-    - echo "ATOM_CI_PACKAGE_ROOT = $ATOM_CI_PACKAGE_ROOT"
+    - set
     - curl -sL https://git.io/fji1w | sh

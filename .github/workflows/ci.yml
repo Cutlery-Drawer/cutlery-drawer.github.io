@@ -12,9 +12,11 @@ jobs:
         strategy:
             matrix:
                 os: [windows-latest]
-                channel: [stable, beta]
         steps:
             - uses: actions/checkout@v2
+            - shell: sh
+              run: set
+
             - shell: powershell
               run: |
                 & .\stuff.ps1
