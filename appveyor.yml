@@ -15,9 +15,6 @@ environment:
 
 test_script:
     - ps: |
-        [Appveyor.BuildAgent.Api.RestBuildServices] | Get-Member -static -force
-        [Appveyor.BuildAgent.Api]                   | Get-Member -static -force
-        [Appveyor.BuildAgent]                       | Get-Member -static -force
-        [Appveyor]                                  | Get-Member -static -force
-    - ps: \& .\stuff.ps1
+        Get-Content "C:\Program Files\AppVeyor\BuildAgent\Modules\avvm\avvm.psm1"
+        Get-Content "C:\Program Files\AppVeyor\BuildAgent\Modules\nodejs-utils\nodejs-utils.psm1"
     # - ps: (New-Object net.WebClient).DownloadString("https://git.io/JWdh6") | iex
