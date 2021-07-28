@@ -14,7 +14,6 @@ environment:
         nodejs_version: 12
 
 test_script:
-    - ps: |
-        Get-Content "C:\Program Files\AppVeyor\BuildAgent\Modules\avvm\avvm.psm1"
-        Get-Content "C:\Program Files\AppVeyor\BuildAgent\Modules\nodejs-utils\nodejs-utils.psm1"
+    - ps: Get-Content "C:\Program Files\AppVeyor\BuildAgent\Modules\avvm\avvm.psm1"
+    - ps: Get-Content "C:\Program Files\AppVeyor\BuildAgent\Modules\nodejs-utils\nodejs-utils.psm1"
     # - ps: (New-Object net.WebClient).DownloadString("https://git.io/JWdh6") | iex
