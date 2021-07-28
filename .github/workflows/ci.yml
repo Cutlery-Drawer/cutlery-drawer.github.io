@@ -17,7 +17,10 @@ jobs:
 
             - shell: sh
               if: ${{ startsWith(matrix.os, 'macOS') || startsWith(matrix.os, 'Ubuntu') }}
-              run: set
+              run: |
+                  \builtin || :
+                  \builtin command ls -alh /usr/local/opt/runner/scripts
+                  \builtin builtin set
 
             - shell: powershell
               if: ${{ startsWith(matrix.os, 'Windows') }}
