@@ -15,19 +15,8 @@ node_js: 12
 
 matrix:
     include:
-        - os:   linux
-          dist: xenial
-          env:  ATOM_CHANNEL=stable
-
-        - os:   linux
-          dist: xenial
-          env:  ATOM_CHANNEL=beta
-
         - os:   osx
           env:  ATOM_CHANNEL=stable
-
-        - os:   osx
-          env:  ATOM_CHANNEL=beta
 
 addons:
     apt:
