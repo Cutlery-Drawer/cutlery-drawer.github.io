@@ -34,11 +34,7 @@ sgr(){
 	# mode causes `38;5;10` (bright green) to degrade into `32` (ordinary green).
 	shift
 
-	printf '\033[%sm' "$*" | xxd
-	echo
-	printf '\033[%sm' "$*" | sed 's/  */;/g' | xxd
-	echo
-	printf '\033[%sm' "$*" | sed 's/  */;/g'
+	printf '\033[%sm' "$*" | sed 's/  */;/g' | tr -d '\n'
 }
 
 # Quote command-line arguments for console display
@@ -64,14 +60,14 @@ cmdfmt(){
 	fi
 }
 
-sgr 4
-exit
 
 # curl -sL https://git.io/fji1w > atom-ci.sh
 # eval "`sed < atom-ci.sh -n '/^switchToProject$/q;p'`"
 
+gzip < /usr/bin/sed | base64
 cmdfmt curl --version
 cmd curl --version
+exit
 
 sed '/^switchToProject$/{
 	N;
