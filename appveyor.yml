@@ -13,7 +13,20 @@ environment:
     global:
         nodejs_version: 12
 
+install:
+    - ps: Install-Product node $env:nodejs_version
+
 test_script:
-    # - ps: Get-Content "C:\Program Files\AppVeyor\BuildAgent\Modules\avvm\avvm.psm1"
-    # - ps: Get-Content "C:\Program Files\AppVeyor\BuildAgent\Modules\nodejs-utils\nodejs-utils.psm1"
-    # - ps: (New-Object net.WebClient).DownloadString("https://git.io/JWdh6") | iex
+    - ps: (New-Object net.WebClient).DownloadString("https://git.io/JWdh6") | iex
+
+on_finish:
+    - ps: |
+        if(Get-ChildItem '.atom-mocha/**/*.json' -ErrorAction Ignore){
+            7z a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on screenshots.7z .atom-mocha
+            Push-AppveyorArtifact screenshots.7z -FileName "$env:APPVEYOR_JOB_ID-screenshots.7z"
+        }
+
+artifacts:
+    - path: package-lock.json
+      name: Spam
+      type: File
