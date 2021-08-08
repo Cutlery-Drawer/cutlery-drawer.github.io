@@ -25,8 +25,3 @@ on_finish:
             7z a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on screenshots.7z .atom-mocha
             Push-AppveyorArtifact screenshots.7z -FileName "$env:APPVEYOR_JOB_ID-screenshots.7z"
         }
-
-artifacts:
-    - path: package-lock.json
-      name: Spam
-      type: File
