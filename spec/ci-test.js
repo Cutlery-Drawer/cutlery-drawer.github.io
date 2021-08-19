@@ -1,6 +1,6 @@
 "use strict";
 
-const {join, resolve} = require("path");
+const {dirname, join, resolve} = require("path");
 const {existsSync, unlinkSync} = require("fs");
 const pkgRoot = resolve(__dirname, "..");
 
@@ -10,14 +10,16 @@ describe("Aquí", () => {
 	});
 });
 
-describe("Screenshots", () => {
+describe("Screenshots", function(){
+	this.timeout(5000);
+	
 	before(async () => {
 		await atom.workspace.open(join(pkgRoot, "package.json"));
 		await atom.workspace.open(join(pkgRoot, "README.md"));
 	});
 	
 	it("mystifies unreproducible CI failures", () => {
-		const saveTo = join(pkgRoot, "screen.png");
+		const saveTo = join(AtomMocha.options.snapshotDir, "screen.png");
 		existsSync(saveTo) && unlinkSync(saveTo);
 		console.log(`Saving to: ${saveTo}`);
 		captureScreen(saveTo);
@@ -35,6 +37,9 @@ function captureScreen(saveTo){
 	if(!(saveTo = String(saveTo)).endsWith(".png"))
 		saveTo += ".png";
 	const {execFileSync} = require("child_process");
+	const {existsSync, mkdirSync} = require("fs");
+	const dir = dirname(saveTo);
+	existsSync(dir) || mkdirSync(dir, {recursive: true});
 	let result;
 	switch(process.platform){
 		case "darwin":
