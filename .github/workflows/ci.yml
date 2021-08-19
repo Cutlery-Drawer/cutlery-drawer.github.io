@@ -19,10 +19,7 @@ jobs:
             
             - name:  Run package tests (Windows)
               if:    ${{ startsWith(matrix.os, 'Windows') }}
-              run: |
-                  node screencap.js
-                  
-                  # (New-Object net.WebClient).DownloadString("https://git.io/JWdh6") | iex
+              run:   (New-Object net.WebClient).DownloadString("https://git.io/JWdh6") | iex
               shell: powershell
               env:
                   ATOM_CHANNEL: ${{ matrix.channel }}

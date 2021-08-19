@@ -11,7 +11,7 @@ describe("Aquí", () => {
 });
 
 describe("Screenshots", function(){
-	this.timeout(5000);
+	this.timeout(15000);
 	
 	before(async () => {
 		await atom.workspace.open(join(pkgRoot, "package.json"));
