@@ -50,10 +50,11 @@ function captureScreen(saveTo){
 				Set-StrictMode -Version Latest
 				$ErrorActionPreference = "Stop"
 				Add-Type -AssemblyName System.Windows.Forms
-				[Reflection.Assembly]::LoadWithPartialName("System.Drawing")
+				[void] [Reflection.Assembly]::LoadWithPartialName("System.Drawing")
 				[void] [System.Reflection.Assembly]::LoadWithPartialName("System.Drawing")
 				[void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
 				
+				[System.Windows.Forms.Screen]::AllScreens
 				$rect    = ([System.Windows.Forms.Screen]::PrimaryScreen).bounds
 				$bitmap  = New-Object Drawing.Bitmap -argumentList $rect.width, $rect.height
 				$context = [Drawing.Graphics]::FromImage($bitmap)
