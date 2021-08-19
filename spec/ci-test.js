@@ -1,6 +1,7 @@
 "use strict";
 
 const {join, resolve} = require("path");
+const {existsSync, unlinkSync} = require("fs");
 const pkgRoot = resolve(__dirname, "..");
 
 describe("Aquí", () => {
@@ -15,8 +16,12 @@ describe("Screenshots", () => {
 		await atom.workspace.open(join(pkgRoot, "README.md"));
 	});
 	
-	it("takes a selfie", async () => {
-		throw new Error("I hate selfies");
+	it("mystifies unreproducible CI failures", () => {
+		const saveTo = join(pkgRoot, "screen.png");
+		existsSync(saveTo) && unlinkSync(saveTo);
+		console.log(`Saving to: ${saveTo}`);
+		captureScreen(saveTo);
+		expect(saveTo).to.existOnDisk;
 	});
 	
 	it("says hello", async () => {
@@ -25,3 +30,41 @@ describe("Screenshots", () => {
 		editor.setText("Hola Mundo");
 	});
 });
+
+function captureScreen(saveTo){
+	if(!(saveTo = String(saveTo)).endsWith(".png"))
+		saveTo += ".png";
+	const {execFileSync} = require("child_process");
+	let result;
+	switch(process.platform){
+		case "darwin":
+			result = execFileSync("screencapture", ["-xmt", "png", saveTo], {encoding: "utf8"});
+			break;
+		case "win32":
+			const input = AtomMocha.utils.deindent `
+				Set-StrictMode -Version Latest
+				$ErrorActionPreference = "Stop"
+				Add-Type -AssemblyName System.Windows.Forms
+				[Reflection.Assembly]::LoadWithPartialName("System.Drawing")
+				[void] [System.Reflection.Assembly]::LoadWithPartialName("System.Drawing")
+				[void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
+				
+				$rect    = ([System.Windows.Forms.Screen]::PrimaryScreen).bounds
+				$bitmap  = New-Object Drawing.Bitmap -argumentList $rect.width, $rect.height
+				$context = [Drawing.Graphics]::FromImage($bitmap)
+				$context.copyFromScreen($rect.location, [Drawing.Point]::Empty, $rect.size)
+				$bitmap.save("${saveTo}")
+				$context.dispose()
+				$bitmap.dispose()
+			`.replace(/\r?\n|\r|\u2028|\u2029/g, "\r\n");
+			result = execFileSync("powershell.exe", [
+				"-NoLogo",
+				"-NoProfile",
+				"-NonInteractive",
+				"-WindowStyle", "Hidden",
+				"-Command", "-",
+			], {input, encoding: "utf8", windowsHide: true});
+			break;
+	}
+	console.log(result);
+}
