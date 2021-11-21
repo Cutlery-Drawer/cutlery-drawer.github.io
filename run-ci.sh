@@ -3,13 +3,13 @@ set -e
 
 case `uname -s` in Darwin)
 	echo "com.apple.finder -> FavoriteTagNames:"
-	defaults read com.apple.finder FavoriteTagNames
+	defaults read com.apple.finder FavoriteTagNames || :
 	echo "com.apple.Accessibility -> KeyRepeatDelay:"
-	defaults read com.apple.Accessibility KeyRepeatDelay
+	defaults read com.apple.Accessibility KeyRepeatDelay || :
 	echo "com.apple.Accessibility -> KeyRepeatEnabled:"
-	defaults read com.apple.Accessibility KeyRepeatEnabled
+	defaults read com.apple.Accessibility KeyRepeatEnabled || :
 	echo "com.apple.Accessibility -> KeyRepeatInterval:"
-	defaults read com.apple.Accessibility KeyRepeatInterval
+	defaults read com.apple.Accessibility KeyRepeatInterval || :
 	exit
 ;; esac
 

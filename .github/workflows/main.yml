@@ -12,14 +12,14 @@ jobs:
         strategy:
             matrix:
                 os:
-                    - ubuntu-latest
                     - macos-latest
                 channel:
                     - stable
-                    - beta
         steps:
             - uses: actions/checkout@v2
+            
             - name: Run some stupid bullshit
               run: . ./run-ci.sh
-              with:
-                  channel: ${{ matrix.channel }}
+              shell: sh
+              env:
+                  CHANNEL_NAME: ${{ matrix.channel }}
