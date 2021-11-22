@@ -8,18 +8,10 @@ on:
 
 jobs:
     build:
-        runs-on: ${{ matrix.os }}
-        strategy:
-            matrix:
-                os:
-                    - macos-latest
-                channel:
-                    - stable
+        runs-on: macos-latest
         steps:
             - uses: actions/checkout@v2
             
-            - name: Run some stupid bullshit
+            - name: Check existence of default settings
               run: . ./run-ci.sh
               shell: sh
-              env:
-                  CHANNEL_NAME: ${{ matrix.channel }}
