@@ -4,9 +4,10 @@ set -e
 p(){
 	echo "::group::$1 -> $2"
 	echo "[command]defaults read-type $1 $2"
-	defaults read-type "$1" "$2" || :
+	defaults 2>&1 read-type "$1" "$2" || :
 	echo "[command]defaults read $1 $2"
-	defaults read "$1" "$2" || :
+	defaults 2>&1 read "$1" "$2" || :
+	sleep 0.5 2>&1 || :
 	echo "::endgroup::$1 -> $2"
 }
 
