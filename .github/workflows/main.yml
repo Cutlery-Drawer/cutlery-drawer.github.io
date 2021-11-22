@@ -1,8 +1,8 @@
 name: Atom-CI
 
 on:
-    push:         {branches: [master]}
-    pull_request: {branches: [master]}
+    push:         {branches: [master, quick-tests]}
+    pull_request: {branches: [master, quick-tests]}
     workflow_dispatch:
         # Enable manual execution via Actions tab
 
