@@ -1,0 +1,44 @@
+= Front page =
+
+[[File:floppa.jpg | right | alt= ((( B I G ~ F L O P P A ))) | Floppah ]]
+
+Normal
+
+''Italic''
+
+'''Bold'''
+
+'''''Bold Italic'''''
+
+<s>Strikeout</s>
+
+<u>Underlined</u>
+
+<tt>Mono</tt>
+
+
+* [https://www.wikipedia.org/ Wikipedia]
+* [https://en.wikipedia.org/wiki/Help:Cheatsheet Wikitext cheatsheet]
+
+
+==Refs and shit==
+Hello<ref name="LoC">[https://www.loc.gov/about/ Library of Congress]</ref> World!<ref>https://www.w3.org/</ref>
+Hello again!<ref name="LoC" /><ref>Perry's Handbook, Sixth Edition, McGraw-Hill Co., 1984.</ref>
+
+<source lang="shellcheckrc">
+shell=sh
+external-sources=true
+<br/>
+# Optional checks
+enable=avoid-nullary-conditions
+enable=check-extra-masked-returns
+enable=deprecate-which
+enable=require-double-brackets
+<br/>
+# Solaris 8-9 compatibility
+disable=SC2006  # Don't suggest $(…) instead of `…`
+disable=SC2021  # Ignore bracketed tr(1) ranges
+
+# Don't suggest explicit “-n” operators in tests
+disable=SC2244
+</source>
