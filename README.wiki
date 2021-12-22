@@ -1,6 +1,13 @@
 = Front page =
 
-[[File:floppa.jpg | right | alt= ((( B I G ~ F L O P P A ))) | Floppah ]]
+[[File:floppa.jpg | thumb | right | alt= ((( B I G ~ F L O P P A ))) | Floppah ]]
+
+<imagemap>
+File:floppa.png|150px|alt=Alt text
+default [[Main Page|Go to main page]]
+</imagemap>
+
+Alt text
 
 Normal
 
