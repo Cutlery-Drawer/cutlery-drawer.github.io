@@ -1,13 +1,3 @@
-/**
- * @fileoverview
- *   Default preferences used for running Firefox headlessly.
- *   Shamelessly hocked from more knowledgeable sources.
- *
- * @sources
- *   [Karma's Firefox launcher    ]{@link https://github.com/karma-runner/karma-firefox-launcher/blob/7cee901index.js}
- *   [Mozilla's Marionette driver ]{@link https://github.com/mozilla/gecko-dev/blob/7e953e97a3ab7/testing/marionette/client/marionette_driver/geckoinstance.py}
- */
-
 user_pref("devtools.enabled", true);
 user_pref("devtools.chrome.enabled", true);
 user_pref("devtools.debugger.prompt-connection", false);
