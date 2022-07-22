@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="initial-scale=1, minimum-scale=1" />
+<title></title>
+<style>
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+html{
+	background: url("../bg.avif") no-repeat 50% 0% #000;
+	background-size: cover;
+}
+body{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width:  100vw;
+	background: #0005;
+}
+figure{
+	margin: 1em;
+	outline: 1px solid rgba(0, 0, 0, 0.25);
+	box-shadow: 0 0 1.5em -.25em #000;
+	background: #fff;
+	position: relative;
+	z-index: 1;
+}
+	figure::after{
+		content: "If you can read this,\0Athe image broke.";
+		white-space: pre;
+		font: bold 1.5em/1.3 sans-serif;
+		transform: scaleX(0.8);
+		opacity: .2;
+		pointer-events: none;
+		text-transform: uppercase;
+		text-align: center;
+		position: absolute;
+		top: 50%;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+	figure:first-of-type { transform: rotate(-5deg); margin-right: -2em; }
+	figure:last-of-type  { transform: rotate(4deg); }
+	figcaption{
+		text-align: center;
+		font: bold 1.5em serif;
+		padding: .5em;
+	}
+		a:link,
+		a:visited{
+			color: inherit;
+			text-decoration: none;
+		}
+		a:hover{
+			color: #888;
+		}
+	img{
+		vertical-align: top;
+		z-index: 2;
+		position: relative;
+	}
+</style>
+</head>
+
+<body>
+	<figure>
+		<figcaption><a href="_images/floppa.jpg">_images/floppa.jpg</a></figcaption>
+		<img width="320" src="_images/floppa.jpg" />
+	</figure>
+	<figure>
+		<figcaption><a href="images/floppa.jpg">images/floppa.jpg</a></figcaption>
+		<img width="320" src="images/floppa.jpg" />
+	</figure>
+</body>
+</html>
