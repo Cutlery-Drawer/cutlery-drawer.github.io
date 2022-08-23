@@ -1,4 +1,4 @@
-name: Atom CI
+name: CI
 
 on:
     push:         {branches: [master, ci]}
@@ -9,26 +9,16 @@ on:
 jobs:
     test:
         name: Run tests
-        runs-on: ${{ matrix.os }}
-        strategy:
-            matrix:
-                os: [windows-latest]
-                channel: [stable]
+        runs-on:
+            - macos-latest
+            - ubuntu-latest
         steps:
-            - uses:  actions/checkout@v2
-            
-            - name:  Run package tests (Windows)
-              if:    ${{ startsWith(matrix.os, 'Windows') }}
-              run:   (New-Object net.WebClient).DownloadString("https://git.io/JWdh6") | iex
-              shell: powershell
-              env:
-                  ATOM_CHANNEL: ${{ matrix.channel }}
+            - uses: actions/checkout@v2
 
-            - name:  Upload artefacts
-              uses:  actions/upload-artifact@v2
-              if:    always()
-              with:
-                  name: screenshots.${{ matrix.os }}.${{ matrix.channel }}
-                  path: .atom-mocha
-                  if-no-files-found: ignore
-                  retention-days: 30
+            - name:  Install dependencies
+              shell: sh
+              run:   make -B install
+
+            - name:  Run package tests
+              shell: sh
+              run:   make all && make coverage
