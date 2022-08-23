@@ -24,9 +24,8 @@ jobs:
               with:
                   node-version: ${{ matrix.node }}
 
-            - name:  Install GNU on Windows
-              if:    ${{ startsWith(matrix.os, 'Windows') }}
-              shell: powershell
+            - name: Install GNU on Windows
+              if:   startsWith(matrix.os, 'Windows')
               run: |
                   choco install gow
                   refreshenv
