@@ -1,10 +1,11 @@
 all:
-	@ true
+	@ echo "make all"
 
 coverage:
-	@ true
+	@ echo "make coverage"
 
 install:
+	@ echo "make install"
 	node --version
 	npm --version
 
