@@ -8,7 +8,7 @@ on:
 
 jobs:
     test:
-        name: Run tests (Node v${{ matrix.node }} on ${{ matrix.os }})
+        name: Test Node v${{ matrix.node }} on ${{ matrix.os }}
         runs-on: ${{ matrix.os }}
         strategy:
             matrix:
@@ -28,20 +28,10 @@ jobs:
               shell: powershell
               run:   choco install gow
 
-            - name:  Run package tests (macOS, Linux)
-              if:    ${{ startsWith(matrix.os, 'macOS') || startsWith(matrix.os, 'Ubuntu') }}
+            - name:  Run package tests
               shell: sh
               run: |
                   node --version
                   npm --version
                   make all
                   make coverage
-
-            - name:  Run package tests (Windows)
-              if:    ${{ startsWith(matrix.os, 'Windows') }}
-              shell: powershell
-              run: |
-                  node --version
-                  npm --version
-                  refreshenv
-                  make all
