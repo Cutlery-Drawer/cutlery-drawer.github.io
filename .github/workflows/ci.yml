@@ -9,24 +9,24 @@ on:
 jobs:
     test:
         name: Test Node v${{ matrix.node }} on ${{ matrix.os }}
-        runs-on: ${{ matrix.os }}
+        runs-on: ${{ matrix.os }}-latest
         strategy:
             matrix:
-                os: [ubuntu-latest, macos-latest, windows-latest]
+                os: [Ubuntu, macOS, Windows]
                 node: [13.2, 14, 16, 18]
 
         steps:
             - uses: actions/checkout@v3
-
-            - name: Install Node.js
-              uses: actions/setup-node@v3
+            - uses: actions/setup-node@v3
               with:
                   node-version: ${{ matrix.node }}
 
-            - name:  Install POSIX utilities
+            - name:  Install GNU on Windows
               if:    ${{ startsWith(matrix.os, 'Windows') }}
               shell: powershell
-              run:   choco install gow
+              run: |
+                  choco install gow
+                  refreshenv
 
             - name:  Run package tests
               shell: sh
