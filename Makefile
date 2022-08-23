@@ -5,6 +5,7 @@ coverage:
 	@ true
 
 install:
-	@ true
+	node --version
+	npm --version
 
 .PHONY: all coverage install
