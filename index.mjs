@@ -19,8 +19,8 @@ function printPlatform(){
 		printMacOS("macOS");
 	else if("win32" === process.platform)
 		printWindows();
-	else if("linux" )
-		printLinix("Probably Ubuntu");
+	else if("linux" === process.platform)
+		printLinux("Probably Ubuntu");
 }
 
 printPlatform();
