@@ -11,6 +11,7 @@
 		"atom": ">=1.35.0"
 	},
 	"devDependencies": {
-		"atom-mocha": "Alhadis/Atom-Mocha"
+		"atom-mocha": "Alhadis/Atom-Mocha",
+		"print": "Alhadis/Print"
 	}
 }
