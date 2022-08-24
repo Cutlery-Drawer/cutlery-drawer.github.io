@@ -36,5 +36,5 @@ jobs:
               run: |
                   echo "$COVERALLS_REPO_TOKEN"
                   npm install c8 coveralls
-                  c8 ./index.mjs
+                  npx c8 ./index.mjs
                   npx c8 report --reporter text-lcov | npx coveralls
