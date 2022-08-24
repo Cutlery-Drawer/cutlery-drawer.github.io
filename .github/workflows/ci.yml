@@ -8,12 +8,11 @@ on:
 
 jobs:
     test:
-        name: Test Node v${{ matrix.node }} on ${{ matrix.os }}
+        name: Test on ${{ matrix.os }}
         runs-on: ${{ matrix.os }}-latest
         strategy:
             matrix:
                 os: [Ubuntu, macOS, Windows]
-                node: [13.2, 14, 16, 18]
 
         steps:
             - name: Checkout repository
@@ -22,7 +21,7 @@ jobs:
             - name: Install Node.js
               uses: actions/setup-node@v3
               with:
-                  node-version: ${{ matrix.node }}
+                  node-version: 18
 
             - name: Install GNU on Windows
               if:   startsWith(matrix.os, 'Windows')
@@ -32,8 +31,10 @@ jobs:
 
             - name:  Run package tests
               shell: sh
+              # env:
+              #     COVERALLS_REPO_TOKEN: ${{ secrets.coveralls-token }}
               run: |
-                  node --version
-                  npm --version
-                  make all
-                  make coverage
+                  echo "$COVERALLS_REPO_TOKEN"
+                  npm install c8 coveralls
+                  c8 ./index.mjs
+                  npx c8 report --reporter text-lcov | npx coveralls
