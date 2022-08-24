@@ -31,10 +31,10 @@ jobs:
 
             - name:  Run package tests
               shell: sh
-              # env:
-              #     COVERALLS_REPO_TOKEN: ${{ secrets.coveralls-token }}
+              env:
+                  COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
               run: |
-                  echo "$COVERALLS_REPO_TOKEN"
+                  echo "$DUMMY_TOKEN"
                   npm install c8 coveralls
                   npx c8 ./index.mjs
                   npx c8 report --reporter text-lcov | npx coveralls
