@@ -41,42 +41,42 @@ jobs:
             - name: List environment variables
               shell: sh
               run: |
-                  printf 'CI:                        %s\n'  '${{ env.CI }}'
-                  printf 'GITHUB_ACTION:             %s\n'  '${{ env.GITHUB_ACTION }}'
-                  printf 'GITHUB_ACTION_PATH:        %s\n'  '${{ env.GITHUB_ACTION_PATH }}'
-                  printf 'GITHUB_ACTION_REPOSITORY:  %s\n'  '${{ env.GITHUB_ACTION_REPOSITORY }}'
-                  printf 'GITHUB_ACTIONS:            %s\n'  '${{ env.GITHUB_ACTIONS }}'
-                  printf 'GITHUB_ACTOR:              %s\n'  '${{ env.GITHUB_ACTOR }}'
-                  printf 'GITHUB_API_URL:            %s\n'  '${{ env.GITHUB_API_URL }}'
-                  printf 'GITHUB_BASE_REF:           %s\n'  '${{ env.GITHUB_BASE_REF }}'
-                  printf 'GITHUB_ENV:                %s\n'  '${{ env.GITHUB_ENV }}'
-                  printf 'GITHUB_EVENT_NAME:         %s\n'  '${{ env.GITHUB_EVENT_NAME }}'
-                  printf 'GITHUB_EVENT_PATH:         %s\n'  '${{ env.GITHUB_EVENT_PATH }}'
-                  printf 'GITHUB_GRAPHQL_URL:        %s\n'  '${{ env.GITHUB_GRAPHQL_URL }}'
-                  printf 'GITHUB_HEAD_REF:           %s\n'  '${{ env.GITHUB_HEAD_REF }}'
-                  printf 'GITHUB_JOB:                %s\n'  '${{ env.GITHUB_JOB }}'
-                  printf 'GITHUB_PATH:               %s\n'  '${{ env.GITHUB_PATH }}'
-                  printf 'GITHUB_REF:                %s\n'  '${{ env.GITHUB_REF }}'
-                  printf 'GITHUB_REF_NAME:           %s\n'  '${{ env.GITHUB_REF_NAME }}'
-                  printf 'GITHUB_REF_PROTECTED:      %s\n'  '${{ env.GITHUB_REF_PROTECTED }}'
-                  printf 'GITHUB_REF_TYPE:           %s\n'  '${{ env.GITHUB_REF_TYPE }}'
-                  printf 'GITHUB_REPOSITORY:         %s\n'  '${{ env.GITHUB_REPOSITORY }}'
-                  printf 'GITHUB_REPOSITORY_OWNER:   %s\n'  '${{ env.GITHUB_REPOSITORY_OWNER }}'
-                  printf 'GITHUB_RETENTION_DAYS:     %s\n'  '${{ env.GITHUB_RETENTION_DAYS }}'
-                  printf 'GITHUB_RUN_ATTEMPT:        %s\n'  '${{ env.GITHUB_RUN_ATTEMPT }}'
-                  printf 'GITHUB_RUN_ID:             %s\n'  '${{ env.GITHUB_RUN_ID }}'
-                  printf 'GITHUB_RUN_NUMBER:         %s\n'  '${{ env.GITHUB_RUN_NUMBER }}'
-                  printf 'GITHUB_SERVER_URL:         %s\n'  '${{ env.GITHUB_SERVER_URL }}'
-                  printf 'GITHUB_SHA:                %s\n'  '${{ env.GITHUB_SHA }}'
-                  printf 'GITHUB_STEP_SUMMARY:       %s\n'  '${{ env.GITHUB_STEP_SUMMARY }}'
-                  printf 'GITHUB_WORKFLOW:           %s\n'  '${{ env.GITHUB_WORKFLOW }}'
-                  printf 'GITHUB_WORKSPACE:          %s\n'  '${{ env.GITHUB_WORKSPACE }}'
-                  printf 'RUNNER_ARCH:               %s\n'  '${{ env.RUNNER_ARCH }}'
-                  printf 'RUNNER_DEBUG:              %s\n'  '${{ env.RUNNER_DEBUG }}'
-                  printf 'RUNNER_NAME:               %s\n'  '${{ env.RUNNER_NAME }}'
-                  printf 'RUNNER_OS:                 %s\n'  '${{ env.RUNNER_OS }}'
-                  printf 'RUNNER_TEMP:               %s\n'  '${{ env.RUNNER_TEMP }}'
-                  printf 'RUNNER_TOOL_CACHE:         %s\n'  '${{ env.RUNNER_TOOL_CACHE }}'
+                  printf 'CI:                        %s\n'  "${CI}"
+                  printf 'GITHUB_ACTION:             %s\n'  "${GITHUB_ACTION}"
+                  printf 'GITHUB_ACTION_PATH:        %s\n'  "${GITHUB_ACTION_PATH}"
+                  printf 'GITHUB_ACTION_REPOSITORY:  %s\n'  "${GITHUB_ACTION_REPOSITORY}"
+                  printf 'GITHUB_ACTIONS:            %s\n'  "${GITHUB_ACTIONS}"
+                  printf 'GITHUB_ACTOR:              %s\n'  "${GITHUB_ACTOR}"
+                  printf 'GITHUB_API_URL:            %s\n'  "${GITHUB_API_URL}"
+                  printf 'GITHUB_BASE_REF:           %s\n'  "${GITHUB_BASE_REF}"
+                  printf 'GITHUB_ENV:                %s\n'  "${GITHUB_ENV}"
+                  printf 'GITHUB_EVENT_NAME:         %s\n'  "${GITHUB_EVENT_NAME}"
+                  printf 'GITHUB_EVENT_PATH:         %s\n'  "${GITHUB_EVENT_PATH}"
+                  printf 'GITHUB_GRAPHQL_URL:        %s\n'  "${GITHUB_GRAPHQL_URL}"
+                  printf 'GITHUB_HEAD_REF:           %s\n'  "${GITHUB_HEAD_REF}"
+                  printf 'GITHUB_JOB:                %s\n'  "${GITHUB_JOB}"
+                  printf 'GITHUB_PATH:               %s\n'  "${GITHUB_PATH}"
+                  printf 'GITHUB_REF:                %s\n'  "${GITHUB_REF}"
+                  printf 'GITHUB_REF_NAME:           %s\n'  "${GITHUB_REF_NAME}"
+                  printf 'GITHUB_REF_PROTECTED:      %s\n'  "${GITHUB_REF_PROTECTED}"
+                  printf 'GITHUB_REF_TYPE:           %s\n'  "${GITHUB_REF_TYPE}"
+                  printf 'GITHUB_REPOSITORY:         %s\n'  "${GITHUB_REPOSITORY}"
+                  printf 'GITHUB_REPOSITORY_OWNER:   %s\n'  "${GITHUB_REPOSITORY_OWNER}"
+                  printf 'GITHUB_RETENTION_DAYS:     %s\n'  "${GITHUB_RETENTION_DAYS}"
+                  printf 'GITHUB_RUN_ATTEMPT:        %s\n'  "${GITHUB_RUN_ATTEMPT}"
+                  printf 'GITHUB_RUN_ID:             %s\n'  "${GITHUB_RUN_ID}"
+                  printf 'GITHUB_RUN_NUMBER:         %s\n'  "${GITHUB_RUN_NUMBER}"
+                  printf 'GITHUB_SERVER_URL:         %s\n'  "${GITHUB_SERVER_URL}"
+                  printf 'GITHUB_SHA:                %s\n'  "${GITHUB_SHA}"
+                  printf 'GITHUB_STEP_SUMMARY:       %s\n'  "${GITHUB_STEP_SUMMARY}"
+                  printf 'GITHUB_WORKFLOW:           %s\n'  "${GITHUB_WORKFLOW}"
+                  printf 'GITHUB_WORKSPACE:          %s\n'  "${GITHUB_WORKSPACE}"
+                  printf 'RUNNER_ARCH:               %s\n'  "${RUNNER_ARCH}"
+                  printf 'RUNNER_DEBUG:              %s\n'  "${RUNNER_DEBUG}"
+                  printf 'RUNNER_NAME:               %s\n'  "${RUNNER_NAME}"
+                  printf 'RUNNER_OS:                 %s\n'  "${RUNNER_OS}"
+                  printf 'RUNNER_TEMP:               %s\n'  "${RUNNER_TEMP}"
+                  printf 'RUNNER_TOOL_CACHE:         %s\n'  "${RUNNER_TOOL_CACHE}"
 
 
             - name: Report coverage
