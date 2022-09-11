@@ -6,14 +6,19 @@ on:
     workflow_dispatch:
         # Enable manual execution via Actions tab
 
+env:
+    COVERALLS_SERVICE_NAME: github-actions
+    COVERALLS_REPO_TOKEN:   ${{ secrets.COVERALLS_REPO_TOKEN }}
+    COVERALLS_PARALLEL:     true
+    NODE_COVERALLS_DEBUG:   1
+
 jobs:
     test:
         name: Test on ${{ matrix.os }}
         runs-on: ${{ matrix.os }}-latest
         strategy:
             matrix:
-                # os: [Ubuntu, macOS, Windows]
-                os: [Ubuntu, macOS]
+                os: [Ubuntu, macOS, Windows]
 
         steps:
             - name: Checkout repository
@@ -38,12 +43,9 @@ jobs:
 
             - name: Report coverage
               shell: sh
-              env:
-                  COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
               run: |
-                  # export COVERALLS_SERVICE_NAME='github'
-                  # export COVERALLS_GIT_BRANCH="$GITHUB_REF_NAME"
-                  # export COVERALLS_GIT_COMMIT="$GITHUB_SHA"
+                  export COVERALLS_GIT_BRANCH="$GITHUB_REF_NAME"
+                  export COVERALLS_GIT_COMMIT="$GITHUB_SHA"
                   # export COVERALLS_SERVICE_NUMBER="$GITHUB_RUN_ID"
                   # export COVERALLS_SERVICE_JOB_ID="$GITHUB_RUN_ID"
                   # export COVERALLS_SERVICE_JOB_NUMBER="$GITHUB_RUN_NUMBER"
