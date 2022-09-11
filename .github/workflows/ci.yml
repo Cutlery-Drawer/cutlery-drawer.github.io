@@ -46,4 +46,5 @@ jobs:
                   COVERALLS_SERVICE_JOB_ID:     ${{ env.GITHUB_RUN_ID }}
                   COVERALLS_SERVICE_JOB_NUMBER: ${{ env.GITHUB_RUN_NUMBER }}
               run: |
+                  env | sort
                   npx c8 report --reporter text-lcov | npx coveralls
