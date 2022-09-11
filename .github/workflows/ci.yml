@@ -39,12 +39,11 @@ jobs:
             - name: Report coverage
               shell: sh
               env:
-                  COVERALLS_SERVICE_NAME:       github
-                  COVERALLS_REPO_TOKEN:         ${{ secrets.COVERALLS_REPO_TOKEN }}
-                  COVERALLS_GIT_BRANCH:         ${{ env.GITHUB_REF }}
-                  COVERALLS_GIT_COMMIT:         ${{ env.GITHUB_SHA }}
-                  COVERALLS_SERVICE_JOB_ID:     ${{ env.GITHUB_RUN_ID }}
-                  COVERALLS_SERVICE_JOB_NUMBER: ${{ env.GITHUB_RUN_NUMBER }}
+                  COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
               run: |
-                  env | sort
+                  export COVERALLS_SERVICE_NAME='github'
+                  export COVERALLS_GIT_BRANCH="$GITHUB_REF"
+                  export COVERALLS_GIT_COMMIT="$GITHUB_SHA"
+                  export COVERALLS_SERVICE_JOB_ID="$GITHUB_RUN_ID"
+                  export COVERALLS_SERVICE_JOB_NUMBER="$GITHUB_RUN_NUMBER"
                   npx c8 report --reporter text-lcov | npx coveralls
