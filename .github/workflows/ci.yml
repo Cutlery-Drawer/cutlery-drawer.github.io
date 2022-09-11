@@ -44,8 +44,8 @@ jobs:
             - name: Report coverage
               shell: sh
               run: |
-                  export COVERALLS_GIT_BRANCH="$GITHUB_REF_NAME"
-                  export COVERALLS_GIT_COMMIT="$GITHUB_SHA"
+                  # export COVERALLS_GIT_BRANCH="$GITHUB_REF_NAME"
+                  # export COVERALLS_GIT_COMMIT="$GITHUB_SHA"
                   # export COVERALLS_SERVICE_NUMBER="$GITHUB_RUN_ID"
                   # export COVERALLS_SERVICE_JOB_ID="$GITHUB_RUN_ID"
                   # export COVERALLS_SERVICE_JOB_NUMBER="$GITHUB_RUN_NUMBER"
