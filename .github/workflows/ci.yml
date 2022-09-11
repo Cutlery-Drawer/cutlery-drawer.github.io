@@ -13,7 +13,7 @@ jobs:
         strategy:
             matrix:
                 # os: [Ubuntu, macOS, Windows]
-                os: [Ubuntu]
+                os: [Ubuntu, macOS]
 
         steps:
             - name: Checkout repository
