@@ -13,8 +13,8 @@ env:
     NODE_COVERALLS_DEBUG:   1
 
 jobs:
-    test:
-        name: Test on ${{ matrix.os }}
+    setup:
+        name: "Setup environment"
         runs-on: ${{ matrix.os }}-latest
         strategy:
             matrix:
@@ -24,29 +24,37 @@ jobs:
             - name: Checkout repository
               uses: actions/checkout@v3
 
+            - name: Install GNU on Windows
+              if:   env.RUNNER_OS == 'Windows'
+              run: |
+                  choco install gow
+                  refreshenv
+
             - name: Install Node.js
               uses: actions/setup-node@v3
               with:
                   node-version: 18
 
-            - name: Install GNU on Windows
-              if:   startsWith(matrix.os, 'Windows')
-              run: |
-                  choco install gow
-                  refreshenv
-
-            - name:  Run package tests
+            - name: Install NPM dependencies
               shell: sh
               run: |
                   npm install c8 coveralls
+
+    test:
+        needs: setup
+        name: Test on ${{ matrix.os }}
+        runs-on: ${{ matrix.os }}-latest
+        strategy:
+            matrix:
+                os: [Ubuntu, macOS, Windows]
+
+        steps:
+            - name:  Run package tests
+              shell: sh
+              run: |
                   npx c8 ./index.mjs
 
             - name: Report coverage
               shell: sh
               run: |
-                  # export COVERALLS_GIT_BRANCH="$GITHUB_REF_NAME"
-                  # export COVERALLS_GIT_COMMIT="$GITHUB_SHA"
-                  # export COVERALLS_SERVICE_NUMBER="$GITHUB_RUN_ID"
-                  # export COVERALLS_SERVICE_JOB_ID="$GITHUB_RUN_ID"
-                  # export COVERALLS_SERVICE_JOB_NUMBER="$GITHUB_RUN_NUMBER"
                   npx c8 report --reporter text-lcov | npx coveralls
