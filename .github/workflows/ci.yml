@@ -12,9 +12,13 @@ env:
     COVERALLS_PARALLEL:     true
     NODE_COVERALLS_DEBUG:   1
 
+defaults:
+    run:
+        shell: sh
+
 jobs:
-    setup:
-        name: "Setup environment"
+    test:
+        name: Test on ${{ matrix.os }}
         runs-on: ${{ matrix.os }}-latest
         strategy:
             matrix:
@@ -26,6 +30,7 @@ jobs:
 
             - name: Install GNU on Windows
               if:   env.RUNNER_OS == 'Windows'
+              shell: cmd
               run: |
                   choco install gow
                   refreshenv
@@ -36,25 +41,10 @@ jobs:
                   node-version: 18
 
             - name: Install NPM dependencies
-              shell: sh
-              run: |
-                  npm install c8 coveralls
+              run:  npm install c8 coveralls
 
-    test:
-        needs: setup
-        name: Test on ${{ matrix.os }}
-        runs-on: ${{ matrix.os }}-latest
-        strategy:
-            matrix:
-                os: [Ubuntu, macOS, Windows]
-
-        steps:
-            - name:  Run package tests
-              shell: sh
-              run: |
-                  npx c8 ./index.mjs
+            - name: Run package tests
+              run:  npx c8 ./index.mjs
 
             - name: Report coverage
-              shell: sh
-              run: |
-                  npx c8 report --reporter text-lcov | npx coveralls
+              run:  npx c8 report --reporter text-lcov | npx coveralls
