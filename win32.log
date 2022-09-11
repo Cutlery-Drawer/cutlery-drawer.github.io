@@ -6,13 +6,13 @@ GITHUB_ACTIONS:            true
 GITHUB_ACTOR:              Alhadis
 GITHUB_API_URL:            https://api.github.com
 GITHUB_BASE_REF:           
-GITHUB_ENV:                D:\a\_temp\_runner_file_commands\set_env_3ac424bb-d019-4d02-ac96-637ba4e3e3e2
+GITHUB_ENV:                D:\a\_temp\_runner_file_commands\set_env_7e276d29-21a3-4b85-9952-609b04f9a3d1
 GITHUB_EVENT_NAME:         push
 GITHUB_EVENT_PATH:         D:\a\_temp\_github_workflow\event.json
 GITHUB_GRAPHQL_URL:        https://api.github.com/graphql
 GITHUB_HEAD_REF:           
 GITHUB_JOB:                test
-GITHUB_PATH:               D:\a\_temp\_runner_file_commands\add_path_3ac424bb-d019-4d02-ac96-637ba4e3e3e2
+GITHUB_PATH:               D:\a\_temp\_runner_file_commands\add_path_7e276d29-21a3-4b85-9952-609b04f9a3d1
 GITHUB_REF:                refs/heads/ci
 GITHUB_REF_NAME:           ci
 GITHUB_REF_PROTECTED:      false
@@ -20,17 +20,17 @@ GITHUB_REF_TYPE:           branch
 GITHUB_REPOSITORY:         Cutlery-Drawer/cutlery-drawer.github.io
 GITHUB_REPOSITORY_OWNER:   Cutlery-Drawer
 GITHUB_RETENTION_DAYS:     90
-GITHUB_RUN_ATTEMPT:        1
+GITHUB_RUN_ATTEMPT:        2
 GITHUB_RUN_ID:             3029819328
 GITHUB_RUN_NUMBER:         93
 GITHUB_SERVER_URL:         https://github.com
 GITHUB_SHA:                bd4644def0b14d8729a698cb8c789d81a0fca760
-GITHUB_STEP_SUMMARY:       D:\a\_temp\_runner_file_commands\step_summary_3ac424bb-d019-4d02-ac96-637ba4e3e3e2
+GITHUB_STEP_SUMMARY:       D:\a\_temp\_runner_file_commands\step_summary_7e276d29-21a3-4b85-9952-609b04f9a3d1
 GITHUB_WORKFLOW:           CI
 GITHUB_WORKSPACE:          D:\a\cutlery-drawer.github.io\cutlery-drawer.github.io
 RUNNER_ARCH:               X64
 RUNNER_DEBUG:              
-RUNNER_NAME:               GitHub Actions 3
+RUNNER_NAME:               GitHub Actions 2
 RUNNER_OS:                 Windows
 RUNNER_TEMP:               D:\a\_temp
 RUNNER_TOOL_CACHE:         C:\hostedtoolcache\windows

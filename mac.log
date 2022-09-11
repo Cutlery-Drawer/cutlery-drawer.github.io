@@ -6,13 +6,13 @@ GITHUB_ACTIONS:            true
 GITHUB_ACTOR:              Alhadis
 GITHUB_API_URL:            https://api.github.com
 GITHUB_BASE_REF:           
-GITHUB_ENV:                /Users/runner/work/_temp/_runner_file_commands/set_env_fea86191-7b04-48ec-9518-771dd12159eb
+GITHUB_ENV:                /Users/runner/work/_temp/_runner_file_commands/set_env_0bfe5729-7d4c-4fc4-ac67-b9630d64079e
 GITHUB_EVENT_NAME:         push
 GITHUB_EVENT_PATH:         /Users/runner/work/_temp/_github_workflow/event.json
 GITHUB_GRAPHQL_URL:        https://api.github.com/graphql
 GITHUB_HEAD_REF:           
 GITHUB_JOB:                test
-GITHUB_PATH:               /Users/runner/work/_temp/_runner_file_commands/add_path_fea86191-7b04-48ec-9518-771dd12159eb
+GITHUB_PATH:               /Users/runner/work/_temp/_runner_file_commands/add_path_0bfe5729-7d4c-4fc4-ac67-b9630d64079e
 GITHUB_REF:                refs/heads/ci
 GITHUB_REF_NAME:           ci
 GITHUB_REF_PROTECTED:      false
@@ -20,17 +20,18 @@ GITHUB_REF_TYPE:           branch
 GITHUB_REPOSITORY:         Cutlery-Drawer/cutlery-drawer.github.io
 GITHUB_REPOSITORY_OWNER:   Cutlery-Drawer
 GITHUB_RETENTION_DAYS:     90
-GITHUB_RUN_ATTEMPT:        1
+GITHUB_RUN_ATTEMPT:        2
 GITHUB_RUN_ID:             3029819328
 GITHUB_RUN_NUMBER:         93
 GITHUB_SERVER_URL:         https://github.com
 GITHUB_SHA:                bd4644def0b14d8729a698cb8c789d81a0fca760
-GITHUB_STEP_SUMMARY:       /Users/runner/work/_temp/_runner_file_commands/step_summary_fea86191-7b04-48ec-9518-771dd12159eb
+GITHUB_STEP_SUMMARY:       /Users/runner/work/_temp/_runner_file_commands/step_summary_0bfe5729-7d4c-4fc4-ac67-b9630d64079e
 GITHUB_WORKFLOW:           CI
 GITHUB_WORKSPACE:          /Users/runner/work/cutlery-drawer.github.io/cutlery-drawer.github.io
 RUNNER_ARCH:               X64
 RUNNER_DEBUG:              
-RUNNER_NAME:               Hosted Agent
+RUNNER_NAME:               GitHub Actions 3
 RUNNER_OS:                 macOS
 RUNNER_TEMP:               /Users/runner/work/_temp
 RUNNER_TOOL_CACHE:         /Users/runner/hostedtoolcache
+
