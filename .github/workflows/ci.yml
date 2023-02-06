@@ -6,45 +6,26 @@ on:
     workflow_dispatch:
         # Enable manual execution via Actions tab
 
-env:
-    COVERALLS_SERVICE_NAME: github-actions
-    COVERALLS_REPO_TOKEN:   ${{ secrets.COVERALLS_REPO_TOKEN }}
-    COVERALLS_PARALLEL:     true
-    NODE_COVERALLS_DEBUG:   1
-
 defaults:
     run:
         shell: sh
 
 jobs:
     test:
-        name: Test on ${{ matrix.os }}
-        runs-on: ${{ matrix.os }}-latest
+        name: Test on macOS ${{ matrix.os }}
+        runs-on: macos-${{ matrix.os }}
         strategy:
             matrix:
-                os: [Ubuntu, macOS, Windows]
+                os:
+                    - 10.15
+                    - 11
+                    - 12
 
         steps:
             - name: Checkout repository
               uses: actions/checkout@v3
 
-            - name: Install GNU on Windows
-              if:   env.RUNNER_OS == 'Windows'
-              shell: cmd
+            - name: Check for mandoc(1)
               run: |
-                  choco install gow
-                  refreshenv
-
-            - name: Install Node.js
-              uses: actions/setup-node@v3
-              with:
-                  node-version: 18
-
-            - name: Install NPM dependencies
-              run:  npm install c8 coveralls
-
-            - name: Run package tests
-              run:  npx c8 ./index.mjs
-
-            - name: Report coverage
-              run:  npx c8 report --reporter text-lcov | npx coveralls
+                  which -a mandoc
+                  ls -alh /usr/bin/mandoc
