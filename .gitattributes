@@ -6,3 +6,5 @@ Amnesia/V.* linguist-vendored
 *.sy linguist-language=SyON
 
 whitelist.txt linguist-language=Ignore-List
+
+*.as linguist-detectable=false
