@@ -7,4 +7,4 @@ Amnesia/V.* linguist-vendored
 
 whitelist.txt linguist-language=Ignore-List
 
-*.as linguist-detectable=false
+Array.as linguist-detectable=false
