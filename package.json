@@ -1,6 +1,6 @@
 {
 	"name": "pruebas",
-	"version": "4.1.9",
+	"version": "4.2.0",
 	"description": "Probando la mierda esta",
 	"atomTestRunner": "atom-mocha",
 	"scripts": {
