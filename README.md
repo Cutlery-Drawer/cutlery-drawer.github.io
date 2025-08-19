@@ -58,6 +58,10 @@ PSD
 -------------------------
 <img border="1" width="200" src="./horn.psd"/>
 
+SVG
+-------------------------
+<img border="1" width="200" src="./dark-mode-test.svg"/>
+
 TIF
 -------------------------
 <img border="1" width="200" src="./whale.tif"/>

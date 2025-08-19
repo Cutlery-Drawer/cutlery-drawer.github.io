@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" width="512" height="512" viewBox="0 0 512 512"
+	xmlns="http://www.w3.org/2000/svg"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xml:space="preserve"
+><style type="text/css">
+	text{
+		font-size: 16px;
+		font-family: sans-serif;
+		font-weight: bold;
+		display: none;
+	}
+	#unsupported{
+		display: initial;
+	}
+	@media (prefers-color-scheme: dark){
+		text         { fill:       #fff; }
+		svg          { background: #000; }
+		#unsupported { display:    none; }
+		#dark        { display: initial; }
+	}
+	@media (prefers-color-scheme: light) {
+		text         { fill:       #000; }
+		svg          { background: #fff; }
+		#unsupported { display:    none; }
+		#light       { display: initial; }
+	}
+</style>
+<text id="unsupported" y="20">Unsupported</text>
+<text id="light" y="20">Light mode</text>
+<text id="dark" y="20">Dark mode</text>
+</svg>
