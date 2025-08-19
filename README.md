@@ -1,6 +1,10 @@
 Image format support on GitHub
 ==============================
 
+AI
+-------------------------
+<img border="1" width="200" src="./MongoDB.ai"/>
+
 APNG
 -------------------------
 ### `.apng`
@@ -49,6 +53,10 @@ JPG
 PNG
 -------------------------
 <img border="1" width="200" src="./8values.png"/>
+
+PSD
+-------------------------
+<img border="1" width="200" src="./horn.psd"/>
 
 TIF
 -------------------------
