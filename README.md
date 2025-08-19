@@ -1,54 +1,67 @@
 Image format support on GitHub
 ==============================
 
+APNG
+-------------------------
+### `.apng`
+<img border="1" width="200" src="./beach-ball.apng"/>
+
+### `.png`
+<img border="1" width="200" src="./beach-ball.png"/>
+
+
 AVIF
 -------------------------
-<img width="700" src="https://gist.github.com/Alhadis/ce61258713e8d24a811ca4ed774cf26c/raw/5a220cb4fceb35050024bbc1dda5b6de2a2c68c3/abydos.avif"/>
+<img border="1" width="200" src="./abydos.avif"/>
 
 BMP
 -------------------------
-<img width="700" src="https://gist.github.com/Alhadis/ce61258713e8d24a811ca4ed774cf26c/raw/5a220cb4fceb35050024bbc1dda5b6de2a2c68c3/racecar.bmp"/>
+<img border="1" width="200" src="./racecar.bmp"/>
 
 GIF
 -------------------------
-<img width="700" src="https://gist.github.com/Alhadis/ce61258713e8d24a811ca4ed774cf26c/raw/5a220cb4fceb35050024bbc1dda5b6de2a2c68c3/spacer.gif"/>
+<img border="1" width="200" src="./spacer.gif"/>
 
 HEIC
 -------------------------
-<img width="700" src="https://gist.github.com/Alhadis/ce61258713e8d24a811ca4ed774cf26c/raw/5a220cb4fceb35050024bbc1dda5b6de2a2c68c3/abydos.heic"/>
+<img border="1" width="200" src="./abydos.heic"/>
 
 ICNS
 -------------------------
-<img width="700" src="https://gist.github.com/Alhadis/ce61258713e8d24a811ca4ed774cf26c/raw/5a220cb4fceb35050024bbc1dda5b6de2a2c68c3/Macintosh.icns"/>
+<img border="1" width="200" src="./Macintosh.icns"/>
 
 ICO
 -------------------------
-<img width="700" src="https://gist.github.com/Alhadis/ce61258713e8d24a811ca4ed774cf26c/raw/5a220cb4fceb35050024bbc1dda5b6de2a2c68c3/font.ico"/>
+### `.ico`
+<img border="1" width="200" src="./font.ico"/>
+
+### `.cur`
+<img border="1" width="200" src="./pencil.cur"/>
 
 JPEG
 -------------------------
-<img width="700" src="https://gist.github.com/Alhadis/ce61258713e8d24a811ca4ed774cf26c/raw/5a220cb4fceb35050024bbc1dda5b6de2a2c68c3/reparations.jpeg"/>
+<img border="1" width="200" src="./reparations.jpeg"/>
 
 JPG
 -------------------------
-<img width="700" src="https://gist.github.com/Alhadis/ce61258713e8d24a811ca4ed774cf26c/raw/5a220cb4fceb35050024bbc1dda5b6de2a2c68c3/delet-this.jpg"/>
+<img border="1" width="200" src="./delet-this.jpg"/>
 
 PNG
 -------------------------
-<img width="700" src="https://gist.github.com/Alhadis/ce61258713e8d24a811ca4ed774cf26c/raw/5a220cb4fceb35050024bbc1dda5b6de2a2c68c3/8values.png"/>
+<img border="1" width="200" src="./8values.png"/>
 
 TIF
 -------------------------
-<img width="700" src="https://gist.github.com/Alhadis/ce61258713e8d24a811ca4ed774cf26c/raw/5a220cb4fceb35050024bbc1dda5b6de2a2c68c3/whale.tif"/>
+<img border="1" width="200" src="./whale.tif"/>
 
 TIFF
 -------------------------
-<img width="700" src="https://gist.github.com/Alhadis/ce61258713e8d24a811ca4ed774cf26c/raw/5a220cb4fceb35050024bbc1dda5b6de2a2c68c3/abydos.tiff"/>
+<img border="1" width="200" src="./abydos.tiff"/>
 
 WEBP
 -------------------------
-<img width="700" src="https://gist.github.com/Alhadis/ce61258713e8d24a811ca4ed774cf26c/raw/5a220cb4fceb35050024bbc1dda5b6de2a2c68c3/lorde.webp"/>
+<img border="1" width="200" src="./lorde.webp"/>
 
 XBM
 -------------------------
-<img width="700" src="https://gist.github.com/Alhadis/ce61258713e8d24a811ca4ed774cf26c/raw/5a220cb4fceb35050024bbc1dda5b6de2a2c68c3/ccode.xbm"/>
+<img border="1" width="200" src="./ccode.xbm"/>
