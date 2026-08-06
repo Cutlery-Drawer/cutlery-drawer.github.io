@@ -1,1 +1,15 @@
-<a href="https://knowyourmeme.com/memes/thank-you-kanye-very-cool" rel="context-for-the-meme-illiterate"><img src="./dashboard-spam.png" alt="Thank you GitHub, very cool!" /></a>
+Yet Another&trade; dark-mode image test
+=======================================
+
+<picture>
+	<source
+		media="(prefers-color-scheme: dark)"
+		srcset="icon.svg#dark"
+		width="32"
+	/>
+	<img
+		alt="Config, JS"
+		src="icon.svg"
+		width="32"
+	/>
+</picture>
